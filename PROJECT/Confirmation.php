@@ -87,7 +87,7 @@
 				<th style='padding: 8px;text-align: center;'>Last Name</th>
 				<th style='padding: 8px;text-align: center;'>Apartment Number</th>
 				<th style='padding: 8px;text-align: center;'>Email</th>
-				<th style='padding: 8px;text-align: center;'>Password</th>
+				
 				</tr>";
 				while($row = mysqli_fetch_assoc($result_1)) 									// fetch next row
 				{ 																			// display the data
@@ -96,7 +96,7 @@
 					<td style='padding: 8px;text-align: center;'>".$row["LastName"]." </td>
 					<td style='padding: 8px;text-align: center;'>". $row["ApartmentNumber"]."</td>
 					<td style='padding: 8px;text-align: center;'>". $row["Email"]."</td>
-					<td style='padding: 8px;text-align: center;'>". $row["Password"]."</td>
+					
 					</tr>"; // output data of that row
 				}
 				echo "</table>";
