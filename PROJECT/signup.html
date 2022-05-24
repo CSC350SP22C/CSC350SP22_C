@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="login.css">
+    <title>Signup page</title>
+
+    <script>
+function validate()
+{
+
+		if(document.getElementById("ApartmentNumber").value == '')
+		{
+			alert("Apartment number FIELD IS EMPTY");
+			return false;
+		}
+		else
+    if(document.getElementById("FirstName").value == '')
+    {
+      alert("First Name field  IS EMPTY");
+      return false;
+    }
+    else
+      if(document.getElementById("LastName").value == '')
+      {
+        alert("Last Name FIELD IS EMPTY");
+        return false;
+      }
+    else
+			if(document.getElementById("Email").value == '')
+			{
+				alert("Email name FIELD IS EMPTY");
+				return false;
+			}
+      else
+    		if(document.getElementById("Password").value == '')
+    		{
+    			alert("Password FIELD IS EMPTY");
+    			return false;
+    		}
+
+			else
+				return true;
+}
+</script>
+  </head>
+  <body>
+    <div class="login-box">
+  <h2>Sign up Form</h2>
+  <form action="CustomerInsert.php" method="post" onsubmit="return validate();">
+    <div class="user-box">
+      <input type="text" name="FirstName" id="FirstName">
+      <label>First name</label>
+    </div>
+    <div class="user-box">
+      <input type="text" name="LastName" id="LastName">
+      <label>Last name</label>
+    </div>
+    <div class="user-box">
+      <input type="text" name="ApartmentNumber" id="ApartmentNumber">
+      <label>Apartment Number</label>
+    </div>
+    <div class="user-box">
+      <input type="text" name="Email" id="Email">
+      <label>Email address</label>
+    </div>
+    <div class="user-box">
+      <input type="password" name="Password" id="Password">
+      <label>Password</label>
+    </div>
+
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <input type="submit"  value="Submit"> <br>
+      <span></span>
+      <span></span>
+      <span></span>
+      <a href="index.html">Back to login page</a>
+
+  </form>
+</div>
+
+  </body>
+</html>
