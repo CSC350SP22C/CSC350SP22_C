@@ -202,7 +202,8 @@ if (mysqli_num_rows($result_1) > 0) 			// If there are rows present
 		
 }
 else 
-	echo "Invalid Apartment entered or Wrong Password!"
+	echo "<p style='text-align:center;'>Invalid Apartment entered or Wrong Password!</p><br>
+            <a href=index.html> back to login</a>";
 
 	
 ?>

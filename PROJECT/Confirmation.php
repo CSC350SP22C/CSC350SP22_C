@@ -74,10 +74,59 @@
 			$result = mysqli_query($connect, $sql); 	// Send the query to the database
 
 			if($result)
-				echo "TENANT INSERTED ";
+			{	
+				echo "
+				<h2 style='text-align:center;'>Schedule Set Successful</h2><br>";
+				$details = "SELECT * FROM laundry_schedule.tenant   WHERE ApartmentNumber = '".$_SESSION['ApartmentNumber']."'";
+				$result_1 = mysqli_query($connect, $details); 
+				echo "<div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><h1 style= 'color:red;font-size:50px;text-align:center;'>Welcome to your profile</h1>
+				<table border='1' style='margin-left: auto;margin-right: auto;'>
+				<caption style='text-align:left;font-size:25px;'> Your personal details</caption>
+				<tr style='text-align:center;padding:8px;background-color:#04AA6D;color:white;'>
+				<th style='padding: 8px;text-align: center;'>First Name</th>
+				<th style='padding: 8px;text-align: center;'>Last Name</th>
+				<th style='padding: 8px;text-align: center;'>Apartment Number</th>
+				<th style='padding: 8px;text-align: center;'>Email</th>
+				<th style='padding: 8px;text-align: center;'>Password</th>
+				</tr>";
+				while($row = mysqli_fetch_assoc($result_1)) 									// fetch next row
+				{ 																			// display the data
+					echo "<tr style='text-align:left;padding:8px;'>
+					<td style='padding: 8px;text-align: center;'>".$row["FirstName"]." </td>
+					<td style='padding: 8px;text-align: center;'>".$row["LastName"]." </td>
+					<td style='padding: 8px;text-align: center;'>". $row["ApartmentNumber"]."</td>
+					<td style='padding: 8px;text-align: center;'>". $row["Email"]."</td>
+					<td style='padding: 8px;text-align: center;'>". $row["Password"]."</td>
+					</tr>"; // output data of that row
+				}
+				echo "</table>";
+				
+				$sql_2 = "SELECT * FROM laundry_schedule.schedule   WHERE ApartmentNumber = '".$_SESSION['ApartmentNumber']."'  ";
+				$result_2 = mysqli_query($connect, $sql_2); 	// Send the query to the database
+				if (mysqli_num_rows($result_2) > 0) 			// If there are rows present
+				{
+						echo "<div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
+						<table border='1'  style='margin-left: auto;margin-right: auto;'>
+						<caption style='text-align:left;font-size:25px;'> Your reservation status</caption>
+						<tr style='padding: 8px;text-align: center;background-color:coral;'>
+						<td style='padding: 8px;text-align: center;'>Apartment Number</td>
+						<td style='padding: 8px;text-align: center;'>Day</td>
+						<td style='padding: 8px;text-align: center;'>Time Slot</td>
+						</tr>";
+						while($row = mysqli_fetch_assoc($result_2)) 									// fetch next row
+						{ 																			// display the data
+							echo "<tr style='padding: 8px;text-align: left;'>
+							<td style='padding: 8px;text-align: center;'>". $row["ApartmentNumber"]."</td>
+							<td style='padding: 8px;text-align: center;'>". $row["Day"]."</td>
+							<td style='padding: 8px;text-align: center;'>". $row["TimeSlot"]."</td>
+							</tr>"; // output data of that row
+						}
+						echo "</table>";
+				}	
+			}	
 			else
 				//echo "TENANT NOT INSERTED";
-				echo "TENANT NOT INSERTED:".mysqli_error($connect);
+				echo "SCHEDULE NOT SET:".mysqli_error($connect);
 		}
 		
 			
